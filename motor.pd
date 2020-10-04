@@ -1,3 +1,0 @@
-#BLDC motor control with software pwm
-
-The following program lets us know how PWM is a square wave signal that repeats itself at a certain frequency. Each PWM cycle is called a period, and the percentage of time the PWM signal is on during a given period determines the duty cycle. With PWM, we’re able to adjust a constant DC voltage to different voltage levels. This helps us control a motor at varying speeds.

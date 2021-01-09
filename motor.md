@@ -53,58 +53,30 @@ Code | Explanation
 <a name="move"></a>
 ### Code for moving the Bot
 
-The [move.py](https://github.com/Gopika-Anitha-Gopan/Triphy/blob/onging/Motor_Control/move.py) actually helps us in moving the Bot. 
-Code | Explanation
------|-------------
-'from motor import BLDC' | lets us import 'class BLDC' from motor.py
-'import curses' | curses is a terminal control library for Unix-like systems, enabling the construction of text user interface (TUI) applications.  It is a library of functions that manage an application's display on character-cell terminals
-'left_motor = BLDC('left', 2, 3)' | The left motor is "connected" to the RaspberryPi which gives the PWM signals. Similarly the Right motor is also initialised.
+The [move.py](https://github.com/Gopika-Anitha-Gopan/Triphy/blob/onging/Motor_Control/move.py) actually helps us in moving the Bot. Initially we import 'class BLDC' from motor.py and also curses. curses is a terminal control library for Unix-like systems, enabling the construction of text user interface (TUI) applications.  It is a library of functions that manage an application's display on character-cell terminals 
 
+```python
+'left_motor = BLDC('left', 2, 3)' 
+```
+The left motor is "connected" to the RaspberryPi which gives the PWM signals. Similarly the Right motor is also initialised.
 
 #### main(window) function :
-The code given below (which is a dictionary) is a part of the main().
-```python
-actions = {
-        curses.KEY_UP:    forward,
-        curses.KEY_DOWN:  backward,
-        curses.KEY_LEFT:  left,
-        curses.KEY_RIGHT: right,
-        27: stop,  # ASCII code for 'ESC' key
-             }
-```
-    
+Firstly, we create a Dictionary by the name 'actions'.
 The function tries to get input from the arrow keys via curses. 
 After this block of code we see a while loop which gets input from the user.
 
 
 #### Inside the while loop :
-Code | Explanation
------|-------------
-'curses.halfdelay(1)' | Waits for 1/10ths of a second for user to input
-'key = window.getch()' | Returns -1 if no key is pressed. The if statement after it checks if the returned value is -1 or no.
+Here we wait for 1/10ths of a second for user to input ,and if the user fails to provide an input, -1 is returned. The if statement after it checks if the returned value is -1 or no.
 
 ```python
   while next_key == key:
-                next_key = window.getch()
-                action()  # keeps calling action
 ```
 
-The above code keeps calling the action dictionary as long as the key is pressed.
-
-```python
-             left_motor.slow()  # makes pwm duty_cycle = 0
-             right_motor.slow()
-             time.sleep(1)
-```
-
-When the key is stopped pressing the above code slows the motor (stops it actually). 
-The next few blocks of code moves it in the direction corresponding to the key pressed.
+The above code snippet keeps calling the action dictionary as long as the key is pressed. When the key is stopped pressing the motor is slowed down.(stops it actually). The next few blocks of code moves it in the direction corresponding to the key pressed.
 
 ```python
 def forward():
-    left_motor.forward()
-    right_motor.forward()
-    time.sleep(0.05)  # Wait for signal to reach motor
 ```
 
 The above code calls the function forward() in motor.py. Similarly reverse(), right(), left(), stop() are called accordingly. 

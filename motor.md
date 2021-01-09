@@ -14,18 +14,18 @@ This is a file that explains in brief, the python codes given in the folder [Mot
 The [motor.py](https://github.com/Gopika-Anitha-Gopan/Triphy/blob/onging/Motor_Control/motor.py) is the python code which lets us control the BLDC motors with software PWM. PWM is a square wave signal that repeats itself at a certain frequency. Each PWM cycle is called a period, and the percentage of time the PWM signal is on during a given period determines the duty cycle. With PWM, we’re able to adjust a constant DC voltage to different voltage levels. This helps us control a motor at varying speeds.  
 Using 'import RPi.GPIO as GPIO' we import the RPi.GPIO library and gives it the name GPIO.Then a function is __init__is defined.
 ####  __init__function :
-Code | Explanation
------|-------------
-'GPIO.setmode(GPIO.BCM)' | with this we indicate whether we want to address the GPIOs via their GPIO number.
-'GPIO.setmode(GPIO.BCM)' | setting up output ports of raspberry pi using RPi.GPIO.
-'p = GPIO.PWM(self.pwmpin, 50)' | self.pwmpin – pin number/GPIO number ,50Hz' – frequency of the PWM
-'p.start(0)'| Starts the PWM (0-Starting duty cycle)
+```python
+GPIO.setmode(GPIO.BCM)
+``` 
+with this we indicate whether we want to address the GPIOs via their GPIO number. We also set up output ports of raspberry pi using RPi.GPIO.
+```python
+p = GPIO.PWM(self.pwmpin, 50)
+```
+(self.pwmpin – pin number/GPIO number ,50Hz) the function also fixes the frequency of the PWM and then starts the PWM (0-Starting duty cycle)
 
 
 ####  move(self) function :
-Code | Explanation
------|------------
-'p.ChangeDutyCycle(self.duty_cycle)'| Changes the duty cycle of the PWM (self.duty_cycle – new duty cycle)
+Changes the duty cycle of the PWM (self.duty_cycle – new duty cycle)
 
 
 ####  forward(self) function : 
@@ -34,7 +34,7 @@ As long as the key corresponding to the forward movement is pressed this functio
 
 #### reverse(self) function
 When this function is called it reverses direction and calls move() like forward().
-'GPIO.output(self.reverse_pin, True)' - Can reverse only if motor is stoped, i.e., pwm = 0. Safety feature of ESC
+'GPIO.output(self.reverse_pin, True)' - Can reverse only if motor is stopped, i.e., pwm = 0. Safety feature of ESC
 
 
 #### slow(self) function :
@@ -42,13 +42,7 @@ Slows down the Bot
 
 
 #### stop(self) function :
-Helps in stopping the Bot
-Code | Explanation
------|-------------
- 'p.stop()'| Stops the PWM
- 'GPIO.cleanup()'| Cleans the GPIO
- 
----
+Helps in stopping the Bot by stopping the PWM.
 
 <a name="move"></a>
 ### Code for moving the Bot

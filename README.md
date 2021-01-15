@@ -9,13 +9,21 @@ os.system("sudo pigpiod")
 The module 'time' is imported to wait in between the execution of different functionalities of the code.
 `import RPi.GPIO as GPIO` is used to integrate the pins (pin numbers) of the Raspberry Pi board
 
-Next, we creat a class called BLDC, which has the following functions 
+---
+
+Next, we creat a class called BLDC, which has the following functions:
+
+### __init__ function :
+
    `__init__(self, name, PWM_pin, reverse_pin)`, which is a constructor that takes in the name of the motor, pwm pin number and the reverse pin number of the ESC. It sets the pulsewidth of the pwm to zero.
 ```Python
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(self.reverse_pin, GPIO.OUT)
+GPIO.setup({self.reverse_pin}, GPIO.OUT)
 ```
-the above piece of code sets up the gpio pins  and sets the numbering scheme to Broadcom GPIO numbers (BCM)
+the above piece of code sets up the gpio pins and sets the numbering scheme to Broadcom GPIO numbers (BCM)
+
+### move(self) function :
+
 ```Python
      def move(self):
         #pi.set_servo_pulsewidth(self.pwmpin, self.pulse_width)
@@ -25,6 +33,8 @@ the above piece of code sets up the gpio pins  and sets the numbering scheme to 
 
      
    * in the function `move(self)`, we just set the pulse width of the motors.
+   
+### increase(self) function :   
    
 ```Python
    def increase(self):

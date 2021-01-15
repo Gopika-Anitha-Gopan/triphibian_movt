@@ -1,5 +1,5 @@
 # Motor.py
-Here, we are using Hardware Pulse Width Modulation for the control of speeds of the motors. So in the below piece of the code, I am importing the module called 'os' which connects my code to the terminal commands.
+Here, we are using Hardware Pulse Width Modulation for the control of speeds of the motors. So in the below piece of the code, I am importing the module called 'os' which connects my code to the terminal commands. **pigpio** is a python module which allows control of the General Purpose Input Outputs (GPIO). 
 ```Python
 import os
 import time
@@ -7,16 +7,15 @@ os.system("sudo pigpiod")
 ```
 `os.system("sudo pigpiod")` is a command written to the terminal such that the module "pigpiod" will be loaded.
 The module 'time' is imported to wait in between the execution of different functionalities of the code.
-`import RPi.GPIO as GPIO` is used to integrate the pins(pin numbers) of the Raspberry Pi board
+`import RPi.GPIO as GPIO` is used to integrate the pins (pin numbers) of the Raspberry Pi board
 
-Here we are creating a class called BLDC, which has the following functions 
-   `__init__(self, name, PWM_pin, reverse_pin)`, which is a constructor that takes in the the pwm pin number, name of the motor and the reverse pin number of the ESC
-       it sets the pulsewidth of the pwm to zero
-    ```Python
-         GPIO.setmode(GPIO.BCM)
-         GPIO.setup(self.reverse_pin, GPIO.OUT)
-     ```
-       the above piece of code sets up the gpio pins  and sets the numbering scheme to Broadcom GPIO numbers (BCM)
+Next, we creat a class called BLDC, which has the following functions 
+   `__init__(self, name, PWM_pin, reverse_pin)`, which is a constructor that takes in the name of the motor, pwm pin number and the reverse pin number of the ESC. It sets the pulsewidth of the pwm to zero.
+```Python
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(self.reverse_pin, GPIO.OUT)
+```
+the above piece of code sets up the gpio pins  and sets the numbering scheme to Broadcom GPIO numbers (BCM)
 ```Python
      def move(self):
         #pi.set_servo_pulsewidth(self.pwmpin, self.pulse_width)

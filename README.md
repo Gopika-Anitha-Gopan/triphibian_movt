@@ -1,20 +1,14 @@
 # Motor.py
 Here, we are using Hardware Pulse Width Modulation for the control of speeds of the motors. So in the below piece of the code, I am importing the module called 'os' which connects my code to the terminal commands.
-So when i do `os.system("sudo pigpiod")` it is a command written to the terminal such that the module "pigpiod" will be loaded.
-The module 'time' is imported to wait in between the execution of different functionalities of the code.
-`import RPi.GPIO as GPIO` is used to integrate the pins(pin numbers) of the Raspberry Pi board
 ```Python
-# BLDC Motor control with hardware pwm
-
 import os
 import time
 os.system("sudo pigpiod")
-time.sleep(1)
-import RPi.GPIO as GPIO
-import pigpio
-pi = pigpio.pi();
-
 ```
+`os.system("sudo pigpiod")` is a command written to the terminal such that the module "pigpiod" will be loaded.
+The module 'time' is imported to wait in between the execution of different functionalities of the code.
+`import RPi.GPIO as GPIO` is used to integrate the pins(pin numbers) of the Raspberry Pi board
+
 Here we are creating a class called BLDC, which has the following functions 
    `__init__(self, name, PWM_pin, reverse_pin)`, which is a constructor that takes in the the pwm pin number, name of the motor and the reverse pin number of the ESC
        it sets the pulsewidth of the pwm to zero

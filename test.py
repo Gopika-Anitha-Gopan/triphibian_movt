@@ -1,7 +1,7 @@
 # keyboard controls
 def on_press(key):
     # character keys do not work
-    intstructions = {
+    instructions = {
         key.up : upthrust,
         key.down : slowDown,
         key.alt_l : yawLeft,
@@ -14,7 +14,7 @@ def on_press(key):
         key.space : pause
 
     }
-    if key in intstructions:
-        intstructions.get(key)()
+    if key in instructions:
+        instructions.get(key)()
     else:
         print("not a control command")
